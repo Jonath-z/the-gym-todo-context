@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const LOCAL_STORAGE_KEY = "todosContex";
+const LOCAL_STORAGE_KEY = "todosContext";
 
 const TodoContext = createContext({
   todos: [],
