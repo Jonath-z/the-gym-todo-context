@@ -1,6 +1,6 @@
 import React from "react";
-import { useTodo } from "../context/TodoProvider";
 import TodoCard from "./TodoCard";
+import { useTodo } from "../context/TodoProvider";
 
 const TodosContainer = () => {
   const { todos } = useTodo();
