@@ -17,16 +17,20 @@ const TodoProvider = ({ children }) => {
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []
   );
 
+  const setTodoItem = (todo) => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todo));
+  };
+
   const addNewTodo = (todo) => {
     const newTodos = [...todos, todo];
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todo));
+    setTodoItem(newTodos);
     setTodos(newTodos);
   };
 
   const deleteTodo = (todo) => {
     const newTodos = todos.filter((_todo) => todo.id !== _todo.id);
     setTodos(newTodos);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTodos));
+    setTodoItem(newTodos);
   };
 
   const achieveTodo = (todo) => {
@@ -34,7 +38,7 @@ const TodoProvider = ({ children }) => {
       todo.id === _todo.id ? { ..._todo, done: !_todo.done } : _todo
     );
     setTodos(newTodos);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTodos));
+    setTodoItem(newTodos);
   };
 
   const updateTask = (todo) => {
@@ -42,7 +46,7 @@ const TodoProvider = ({ children }) => {
       return _todo.id === todo.id ? { ..._todo, task: todo.task } : _todo;
     });
     setTodos(updatedTodos);
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedTodos));
+    setTodoItem(updatedTodos);
   };
 
   return (
